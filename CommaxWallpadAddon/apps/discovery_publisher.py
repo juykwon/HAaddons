@@ -128,12 +128,7 @@ class DiscoveryPublisher:
                                     "command_topic": f"{self.controller.HA_TOPIC}/{device_id}/power/command",
                                     "payload_on": "ON",
                                     "payload_off": "OFF",
-                                    "device": {
-                                        "identifiers": [f"commax_{device_id}"],
-                                        "name": f"코맥스 조명 {idx}",
-                                        "model": "COMMAX Wallpad Light",
-                                        "manufacturer": "COMMAX"
-                                    },
+                                    **self.device_base_info,                                    
                                     **self.availability
                                 }
                             ))
@@ -148,7 +143,12 @@ class DiscoveryPublisher:
                                 "command_topic": f"{self.controller.HA_TOPIC}/{device_id}/power/command",
                                 "payload_on": "ON",
                                 "payload_off": "OFF",
-                                **self.device_base_info,
+                                "device": {
+                                        "identifiers": [f"commax_{device_id}"],
+                                        "name": f"코맥스 조명 {idx}",
+                                        "model": "COMMAX Wallpad Light",
+                                        "manufacturer": "COMMAX"
+                                    },
                                 **self.availability
                             }
                         ))
